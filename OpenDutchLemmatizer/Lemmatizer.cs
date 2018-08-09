@@ -11,7 +11,18 @@ namespace OpenDutchLemmatizer
 
         public string GetLemma(string word)
         {
-            return word;
+            if (word == null)
+                return "";
+
+            var result = word;
+
+            if (result.EndsWith("en", StringComparison.Ordinal))
+                result = result.Substring(0, result.Length - 2);
+            
+            if (result.EndsWith("dt", StringComparison.Ordinal))
+                result = result.Substring(0, result.Length - 1);
+            
+            return result;
         }
 
     }
