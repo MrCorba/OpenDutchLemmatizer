@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace OpenDutchLemmatizer
 {
-    public class OpenDutchLemmatizer
+    public class Lemmatizer
     {
+
+        public string GetLemma(string word)
+        {
+            return word;
+        }
+
     }
 }
