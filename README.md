@@ -1,6 +1,12 @@
+[![Build Status](https://travis-ci.org/MrCorba/OpenDutchLemmatizer.svg?branch=master)](https://travis-ci.org/MrCorba/OpenDutchLemmatizer)
+
 # Open Dutch Lemmatizer
 
-A start for a Open Source Dutch Lemmatizer as a NuGet package.
+An Open Source Dutch Lemmatizer package.
+
+## Status
+
+Currently working on getting the 75000 test cases to succeed. Once that's working a version on NuGet will be uploaded.
 
 ## How to Contribute
 
