@@ -4,7 +4,6 @@ namespace OpenDutchLemmatizer
 {
     public class Lemmatizer
     {
-
         public string GetLemma(string word)
         {
             if (word == null)
@@ -13,8 +12,15 @@ namespace OpenDutchLemmatizer
             var result = word;
 
             if (result.EndsWith("en", StringComparison.Ordinal))
+            {
                 result = result.Substring(0, result.Length - 2);
-            
+                
+                if (CharUtils.EndsWithDoubleConsonant(result))
+                {
+                    result = result.Substring(0, result.Length - 1);
+                }
+            }
+
             if (result.EndsWith("dt", StringComparison.Ordinal))
                 result = result.Substring(0, result.Length - 1);
 
