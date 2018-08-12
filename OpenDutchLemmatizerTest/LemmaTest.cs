@@ -18,7 +18,7 @@ namespace OpenDutchLemmatizerTest
         }
         
         [Test, TestCaseSource("GetTestData")]
-        public void TestLemmatizer(string form, string lemma)
+        public void TestLemmatizer(string lemma, string form)
         {
             Assert.AreEqual(lemma, Lemmatizer.GetLemma(form));
         }
