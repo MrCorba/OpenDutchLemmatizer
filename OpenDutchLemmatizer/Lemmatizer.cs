@@ -36,6 +36,12 @@ namespace OpenDutchLemmatizer
                 result = CleanUp(result);
             }
 
+            if (result.EndsWith("pje", StringComparison.Ordinal))
+            {
+                result = result.Substring(0, result.Length - 2);
+                result = CleanUp(result);
+            }
+
             return result.ToLower();
         }
 
