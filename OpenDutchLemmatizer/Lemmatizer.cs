@@ -14,8 +14,16 @@ namespace OpenDutchLemmatizer
 
             if (result.EndsWith("en", StringComparison.Ordinal))
             {
-                result = result.Substring(0, result.Length - 2);
-                result = CleanUp(result);
+                if (result.EndsWith("den", StringComparison.Ordinal))
+                {
+                    result = result.Substring(0, result.Length - 3);
+                    result += "en";
+                }
+                else
+                {
+                    result = result.Substring(0, result.Length - 2);
+                    result = CleanUp(result);
+                }
             }
 
             if (result.EndsWith("dt", StringComparison.Ordinal))
