@@ -1,44 +1,26 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenDutchLemmatizer;
-using System.IO;
-using System.Diagnostics;
 
 namespace OpenDutchLemmatizerTest
 {
     [TestClass]
     public class LemmaTest
     {
+        public TestContext TestContext { get; set; }
+        public Lemmatizer Lemmatizer;
+
+        public LemmaTest()
+        {
+            Lemmatizer = new Lemmatizer();
+        }
+
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "TestData\\dutch_lemmas.csv", "dutch_lemmas#csv", DataAccessMethod.Sequential)]
         [TestMethod]
         public void TestLemmatizer()
         {
-            var lemmatizer = new Lemmatizer();
-
-            var dir = Environment.CurrentDirectory;
-            var testFile = Path.Combine(dir, "TestData", "dutch_lemmas.txt");
-            var testOutput = Path.Combine(dir, "failed_words.txt");
-            string line;
-
-            var goodCount = 0;
-            var totalCount = 0;
-
-            using (var reader = new StreamReader(testFile))
-            using (var writer = new StreamWriter(testOutput))
-            {
-                while ((line = reader.ReadLine()) != null)
-                {
-                    var words = line.Split(',');
-
-                    if (words[0] == lemmatizer.GetLemma(words[1]))
-                        goodCount++;
-                    else
-                        writer.WriteLine(String.Join(",", words));
-
-                    totalCount++;
-                }
-            }
-
-            Assert.AreEqual(totalCount, goodCount);
+            var lemma = TestContext.DataRow.ItemArray[0].ToString();
+            var form = TestContext.DataRow.ItemArray[1].ToString();
+            Assert.AreEqual(lemma, Lemmatizer.GetLemma(form));
         }
     }
 }
