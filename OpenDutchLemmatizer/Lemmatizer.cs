@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenDutchLemmatizer
 {
@@ -21,8 +17,14 @@ namespace OpenDutchLemmatizer
             
             if (result.EndsWith("dt", StringComparison.Ordinal))
                 result = result.Substring(0, result.Length - 1);
-            
-            return result;
+
+            if (result.EndsWith("tje", StringComparison.Ordinal))
+                result = result.Substring(0, result.Length - 3);
+
+            if (result.EndsWith("tjes", StringComparison.Ordinal))
+                result = result.Substring(0, result.Length - 4);
+
+            return result.ToLower();
         }
 
     }
