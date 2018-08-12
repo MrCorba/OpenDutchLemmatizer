@@ -31,5 +31,37 @@
         {
             return !IsVowel(word, index);
         }
+
+        public static string UnDoubleConsonant(string word)
+        {
+            if (CharUtils.EndsWithDoubleConsonant(word))
+            {
+                word = word.Substring(0, word.Length - 1);
+            }
+
+            return word;
+        }
+
+        public static string ChangeMultiConsonantToSingle(string word)
+        {
+            switch(word[word.Length -1])
+            {
+                case 'v':
+                    word = ReplaceLastCharWith(word, 'f');
+                    break;
+                case 'z':
+                    word = ReplaceLastCharWith(word, 's');
+                    break;
+            }
+
+            return word;
+        }
+
+        private static string ReplaceLastCharWith(string word, char c)
+        {
+            word = word.Substring(0, word.Length - 1);
+            word += c;
+            return word;
+        }
     }
 }

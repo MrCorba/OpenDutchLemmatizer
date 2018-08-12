@@ -9,28 +9,42 @@ namespace OpenDutchLemmatizer
             if (word == null)
                 return "";
 
-            var result = word;
+            var result = word.ToLower();
+            CleanUp(result);
 
             if (result.EndsWith("en", StringComparison.Ordinal))
             {
                 result = result.Substring(0, result.Length - 2);
-                
-                if (CharUtils.EndsWithDoubleConsonant(result))
-                {
-                    result = result.Substring(0, result.Length - 1);
-                }
+                result = CleanUp(result);
             }
 
             if (result.EndsWith("dt", StringComparison.Ordinal))
+            {
                 result = result.Substring(0, result.Length - 1);
+                result = CleanUp(result);
+            }
 
             if (result.EndsWith("tje", StringComparison.Ordinal))
+            {
                 result = result.Substring(0, result.Length - 3);
+                result = CleanUp(result);
+            }
 
             if (result.EndsWith("tjes", StringComparison.Ordinal))
+            {
                 result = result.Substring(0, result.Length - 4);
+                result = CleanUp(result);
+            }
 
             return result.ToLower();
+        }
+
+        private string CleanUp(string word)
+        {
+            word = CharUtils.UnDoubleConsonant(word);
+            word = CharUtils.ChangeMultiConsonantToSingle(word);
+
+            return word;
         }
 
     }
