@@ -42,6 +42,12 @@ namespace OpenDutchLemmatizer
                 result = CleanUp(result);
             }
 
+            if (result.EndsWith("s", StringComparison.Ordinal))
+            {
+                result = result.Substring(0, result.Length - 1);
+                result = CleanUp(result);
+            }
+
             return result.ToLower();
         }
 
