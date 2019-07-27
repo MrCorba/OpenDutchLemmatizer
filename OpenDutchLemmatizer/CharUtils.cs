@@ -36,7 +36,7 @@
         {
             if (CharUtils.EndsWithDoubleConsonant(word))
             {
-                word = word.Substring(0, word.Length - 1);
+                word = word.RemoveLast(1);
             }
 
             return word;
@@ -59,7 +59,7 @@
 
         private static string ReplaceLastCharWith(string word, char c)
         {
-            word = word.Substring(0, word.Length - 1);
+            word = word.RemoveLast(1);
             word += c;
             return word;
         }

@@ -7,52 +7,52 @@ namespace OpenDutchLemmatizer
         public string GetLemma(string word)
         {
             if (word == null)
-                return "";
+                return string.Empty;
 
             var result = word.ToLower();
             CleanUp(result);
 
-            if (result.EndsWith("en", StringComparison.Ordinal))
+            if (result.EndsWithOrdinal("en"))
             {
-                if (result.EndsWith("den", StringComparison.Ordinal))
+                if (result.EndsWithOrdinal("den"))
                 {
-                    result = result.Substring(0, result.Length - 3);
+                    result = result.RemoveLast(3);
                     result += "en";
                 }
                 else
                 {
-                    result = result.Substring(0, result.Length - 2);
+                    result = result.RemoveLast(2);
                     result = CleanUp(result);
                 }
             }
 
-            if (result.EndsWith("dt", StringComparison.Ordinal))
+            if (result.EndsWithOrdinal("dt"))
             {
-                result = result.Substring(0, result.Length - 1);
+                result = result.RemoveLast(2);
                 result = CleanUp(result);
             }
 
-            if (result.EndsWith("tje", StringComparison.Ordinal))
+            if (result.EndsWithOrdinal("tje"))
             {
-                result = result.Substring(0, result.Length - 3);
+                result = result.RemoveLast(3);
                 result = CleanUp(result);
             }
 
-            if (result.EndsWith("tjes", StringComparison.Ordinal))
+            if (result.EndsWithOrdinal("tjes"))
             {
-                result = result.Substring(0, result.Length - 4);
+                result = result.RemoveLast(4);
                 result = CleanUp(result);
             }
 
-            if (result.EndsWith("pje", StringComparison.Ordinal))
+            if (result.EndsWithOrdinal("pje"))
             {
-                result = result.Substring(0, result.Length - 2);
+                result = result.RemoveLast(2);
                 result = CleanUp(result);
             }
 
-            if (result.EndsWith("s", StringComparison.Ordinal))
+            if (result.EndsWithOrdinal("s"))
             {
-                result = result.Substring(0, result.Length - 1);
+                result = result.RemoveLast(1);
                 result = CleanUp(result);
             }
 

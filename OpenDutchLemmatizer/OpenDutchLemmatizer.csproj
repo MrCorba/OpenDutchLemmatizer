@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharUtils.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Lemmatizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
