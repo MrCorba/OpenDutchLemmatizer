@@ -25,6 +25,7 @@ namespace OpenDutchLemmatizer
                     result = CleanUp(result);
                 }
             }
+            else
 
             if (result.EndsWithOrdinal("dt"))
             {
@@ -32,25 +33,31 @@ namespace OpenDutchLemmatizer
                 result = CleanUp(result);
             }
 
-            if (result.EndsWithOrdinal("tje"))
+            else if (result.EndsWithOrdinal("tje"))
             {
                 result = result.RemoveLast(3);
                 result = CleanUp(result);
             }
 
-            if (result.EndsWithOrdinal("tjes"))
+            else if (result.EndsWithOrdinal("tjes"))
             {
                 result = result.RemoveLast(4);
                 result = CleanUp(result);
             }
 
-            if (result.EndsWithOrdinal("pje"))
+            else if (result.EndsWithOrdinal("pje"))
             {
                 result = result.RemoveLast(2);
                 result = CleanUp(result);
             }
 
-            if (result.EndsWithOrdinal("s"))
+            else if (result.EndsWithOrdinal("s"))
+            {
+                result = result.RemoveLast(1);
+                result = CleanUp(result);
+            }
+
+            else if (result.EndsWithOrdinal("nd"))
             {
                 result = result.RemoveLast(1);
                 result = CleanUp(result);
